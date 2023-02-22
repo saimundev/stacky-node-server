@@ -29,8 +29,8 @@ export const regusterUser = async (req,res) => {
         //email validation 
         const userToken = jwt.sign({ email: email }, process.env.SECRET, { expiresIn: "10m" });
        
-        const link = `https://ntacky-node.onrender.com/api/auth/verify/${userToken}`
-
+        const link = `https://stacky-node.onrender.com/api/auth/verify/${userToken}`
+   
         let transport = nodemailer.createTransport({
             service: "gmail",
             auth: {
@@ -156,7 +156,7 @@ export const forgetPasswordEmailVarefecation = async (req, res) => {
             const foundUser = await userModal.findOne({ email: email });
         if (foundUser) {
             const token = jwt.sign({ email: foundUser.email }, process.env.SECRET, { expiresIn: "10m" });
-            const link = `https://stacky-node.netlify.app/changepassword/${foundUser._id}/${token}`
+            const link = `https://stacky-nodes.netlify.app/changepassword/${foundUser._id}/${token}`
             const transport = nodemailer.createTransport({
                 service:"gmail",
                 host: "smtp.example.com",
